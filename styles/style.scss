@@ -1,0 +1,76 @@
+$light-theme-color: lightgray;
+$dark-theme-color: #0d1117;
+$base-border-radius: 6px;
+
+@function generate-linear-gradient($start-color, $end-color) {
+    @return linear-gradient(to right, $start-color, $end-color 200%);
+}
+
+@function generate-radial-gradient($color-1, $color-2) {
+    @return radial-gradient(circle, $color-1 0, $color-2);
+}
+
+@function generate-shadow($x, $y, $blur, $spread, $color) {
+    @return $x $y $blur $spread $color;
+}
+
+@function calculate-border-radius($multiplier) {
+    @return $base-border-radius * $multiplier;
+}
+  
+@function theme-color($theme) {
+    @if $theme == 'light' {
+      @return $light-theme-color;
+    } @else {
+      @return $dark-theme-color;
+    }
+}
+
+html, 
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: generate-linear-gradient($dark-theme-color, $light-theme-color);
+    .counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 210px;
+        height: 80px;
+        border: 1px solid #30363d;
+        background-image: generate-radial-gradient(darken($light-theme-color, 30%), $dark-theme-color);
+        border-radius: calculate-border-radius(2);
+        cursor: pointer;
+        user-select: none;
+        transform: scale(1);
+        transition: all 0.2s ease;
+        box-shadow: generate-shadow(0px, 4px, 4px, 0px, rgba(0, 0, 0, 0.1));
+        &:hover {
+            background-image: generate-radial-gradient(darken($light-theme-color, 27%), lighten($dark-theme-color, 3%));
+        }
+        &:active {
+            background-image: generate-radial-gradient(darken($light-theme-color, 25%), lighten($dark-theme-color, 5%));
+            h1 {
+                transform: scale(1.1);
+            }
+        }
+        h1 {
+            margin: 0;
+            color: #c9d1d9;
+            transition: all 0.2s ease;
+        }
+    }
+}

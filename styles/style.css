@@ -1,0 +1,46 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: linear-gradient(to right, #0d1117, lightgray 200%);
+}
+.container .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 210px;
+  height: 80px;
+  border: 1px solid #30363d;
+  background-image: radial-gradient(circle, #878787 0, #0d1117);
+  border-radius: 12px;
+  cursor: pointer;
+  user-select: none;
+  transform: scale(1);
+  transition: all 0.2s ease;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.container .counter:hover {
+  background-image: radial-gradient(circle, #8e8e8e 0, #131821);
+}
+.container .counter:active {
+  background-image: radial-gradient(circle, #939393 0, #161d27);
+}
+.container .counter:active h1 {
+  transform: scale(1.1);
+}
+.container .counter h1 {
+  margin: 0;
+  color: #c9d1d9;
+  transition: all 0.2s ease;
+}
